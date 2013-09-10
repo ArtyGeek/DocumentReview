@@ -12,6 +12,8 @@ ENV["DOMAIN_NAME"] = 'gmail.com'
 ENV["GMAIL_USERNAME"] = 'yurko25@gmail.com'
 ENV["GMAIL_PASSWORD"] = 'cypress,ktfnm'
 
+config.assets.initialize_on_precompile = false
+
 module Documentreview
   class Application < Rails::Application
 

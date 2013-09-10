@@ -34,6 +34,7 @@
         %blockquote
           %p.br= comment.content
           %small= comment.user.name
+    = link_to "More", id: 'more-comments'
 
 
 - if @document.state == 'pending review'

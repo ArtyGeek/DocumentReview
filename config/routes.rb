@@ -22,4 +22,6 @@ Documentreview::Application.routes.draw do
     get 'users/:id/add_user_role', to: 'users#add_user_role', as: :add_user_role
   end
 
+  get ':id/comments', to: 'base#get_more_comments', as: :get_more_comments
+
 end

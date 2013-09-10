@@ -23,10 +23,13 @@
       %br
 
 - unless @document.comments.empty? || @document.comments.first.new_record?
-  %div{ :class => "author-documents-standart" }
+  %div{ :class => "author-documents-standart", :id => "comments" }
     %h3 Last 3 comments
     - @document.comments.last(3).each do |comment|
       - unless comment.new_record?
         %blockquote
           %p.br= comment.content
           %small= comment.user.name
+
+    = link_to "More", id: 'more-comments'
+
