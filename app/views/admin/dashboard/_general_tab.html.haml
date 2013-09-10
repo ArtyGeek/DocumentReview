@@ -1,6 +1,6 @@
-%div{:style => 'max-width: 30%; float:left; text-align: center'}
+%div{ :class => 'admin-dashboard-users' }
   %h5 Users by roles
-  %table{:class => 'table table-bordered table-striped table-hover'}
+  %table{ :class => 'table table-bordered table-striped table-hover' }
     %thead
       %th Role
       %th Count of users
@@ -8,7 +8,7 @@
       %tr
         %td= role.name
         %td= role.users.count
-%div{:style => 'max-width: 60%; float:left; text-align: center; margin-left:5%'}
+%div{:class => 'admin-dashboard-documents'}
   %h5 Documents by state
   %table{:class => 'table  table-bordered table-striped table-hover'}
     %thead

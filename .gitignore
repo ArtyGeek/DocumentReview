@@ -19,6 +19,7 @@ db/*.sqlite3
 .sass-cache
 /config/config.yml
 /config/database.yml
+/config/application.rb
 /coverage.data
 /coverage/
 /db/*.javadb/

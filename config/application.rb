@@ -9,8 +9,8 @@ ENV['ADMIN_NAME'] = 'admin'
 ENV['ADMIN_EMAIL'] = 'admin@demo.app'
 ENV['ADMIN_PASSWORD'] = 'admin12345'
 ENV["DOMAIN_NAME"] = 'gmail.com'
-ENV["GMAIL_USERNAME"] =
-ENV["GMAIL_PASSWORD"] =
+ENV["GMAIL_USERNAME"] = 'yurko25@gmail.com'
+ENV["GMAIL_PASSWORD"] = 'cypress,ktfnm'
 
 module Documentreview
   class Application < Rails::Application

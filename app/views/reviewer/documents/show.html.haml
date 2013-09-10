@@ -1,4 +1,4 @@
-%div{ :style => "float:left; padding: 3% 4%"}
+%div{ :class => 'reviewer-documents-standart'}
   %h3
     Document #
     = @document.id
@@ -19,14 +19,15 @@
   = link_to 'Send for publication', reviewer_send_for_publication_path(@document), class: 'btn btn-small btn-info ' if @document.state == 'pending review'
 
 - if @document.attachments.any?
-  %div{:style => 'float: left; padding: 3% 4%; text-align: left'}
+  %div{:class => 'reviewer-documents-standart'}
     %h3 Document attachments
     - @document.attachments.each do |attachment|
       = attachment.file_file_name
       = link_to 'Download', attachment.file.url
+      %br
 
 - unless @document.comments.empty? || @document.comments.first.new_record?
-  %div{:style => 'float: left; padding: 3% 4%; text-align: left'}
+  %div{:class => 'reviewer-documents-standart'}
     %h3 Last 3 comments
     - @document.comments.last(3).each do |comment|
       - unless comment.new_record?
@@ -36,7 +37,7 @@
 
 
 - if @document.state == 'pending review'
-  %div{:style => 'float: left; padding: 3% 4%;'}
+  %div{:class => 'reviewer-documents-standart'}
     %h3 Comment
     = simple_form_for [:reviewer, @document], url: reviewer_send_for_rework_path, method: :get do |f|
       = f.simple_fields_for :comments, @document.comments do |comment|
