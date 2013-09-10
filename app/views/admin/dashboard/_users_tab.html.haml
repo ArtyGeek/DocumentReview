@@ -1,0 +1,24 @@
+%table{:class => 'table table-striped table-hover'}
+  %thead
+    %th Name
+    %th Email
+    %th Roles
+    %th Total sign ins
+    %th Last sign in
+    %th Actions
+
+  - @users.each do |user|
+    %tr
+      %td= user.name
+      %td= user.email
+      %td= user.roles.map {|role| role.name}.join(',')
+      %td= user.sign_in_count
+      %td= user.last_sign_in_at
+      %td
+        = link_to 'Show', admin_user_path(user), class: 'btn btn-mini btn-success'
+        = link_to 'Edit', edit_admin_user_path(user), class: 'btn btn-mini btn-warning'
+        = link_to 'Destroy', admin_user_path(user), class: 'btn btn-mini btn-danger', :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New User', new_admin_user_path,  class: 'btn btn-primary'

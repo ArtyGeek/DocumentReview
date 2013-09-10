@@ -1,0 +1,73 @@
+%h1 List of Documents
+%br
+
+
+%ul#myTab.nav.nav-tabs
+  %li{:class => 'active'}
+    %a{:href => "#pending-review"} Pending
+  %li
+    %a{:href => "#in-rework"} In rework
+  %li
+    %a{:href => "#pending-publication"} Pending publication
+
+.tab-content
+  #pending-review.tab-pane.active
+    %table{:class => 'table table-stripped'}
+      %tr
+        %th Title
+        %th Description
+        %th Status
+        %th Actions
+
+      - @documents.with_state(:pending_review).each do |document|
+        %tr
+          %td= document.title
+          %td= document.description
+          %td= document.state
+          %td
+            = link_to 'Show', reviewer_document_path(document), class: 'btn btn-success btn-small'
+
+      %br
+
+
+  #in-rework.tab-pane
+    %table{:class => 'table table-stripped'}
+      %tr
+        %th Title
+        %th Description
+        %th Status
+        %th Actions
+
+      - @documents.with_state(:in_rework).each do |document|
+        %tr
+          %td= document.title
+          %td= document.description
+          %td= document.state
+          %td
+            = link_to 'Show', reviewer_document_path(document), class: 'btn btn-success btn-small'
+
+      %br
+
+  #pending-publication.tab-pane
+    %table{:class => 'table table-stripped'}
+      %tr
+        %th Title
+        %th Description
+        %th Status
+        %th Actions
+
+      - @documents.with_state(:pending_publication).each do |document|
+        %tr
+          %td= document.title
+          %td= document.description
+          %td= document.state
+          %td
+            = link_to 'Show', reviewer_document_path(document), class: 'btn btn-success btn-small'
+
+      %br
+
+:javascript
+  $('#myTab a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+  })

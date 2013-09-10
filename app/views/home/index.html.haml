@@ -1,0 +1,18 @@
+%h1 Published documents
+
+%table{:class => 'table table-stripped'}
+  %tr
+    %th Title
+    %th Description
+    %th Status
+    %th Actions
+
+
+  - @documents.each do |author_document|
+    %tr
+      %td= author_document.title
+      %td= author_document.description
+      %td= author_document.state
+      %td
+        = link_to 'Show', author_document_path(author_document), class: 'btn btn-success btn-small'
+

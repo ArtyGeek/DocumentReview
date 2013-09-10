@@ -1,0 +1,19 @@
+%h1 Admin Dashboard
+
+
+%ul#myTab.nav.nav-tabs
+  %li{:class => 'active'}
+    %a{:href => "#general"} General information
+  %li
+    %a{:href => "#users"} Users Managment
+  %li
+    %a{:href => "#pending-documents"} Documents to publication
+
+.tab-content
+  #general.tab-pane.active
+    = render 'general_tab'
+  #users.tab-pane
+    = render 'users_tab'
+  #pending-documents.tab-pane
+    = render 'documents_tab'
+

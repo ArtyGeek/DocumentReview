@@ -1,0 +1,55 @@
+%div{ :style => "float:left; padding: 3% 4%"}
+  %h3
+    Document #
+    = @document.id
+
+  %p
+    %strong Title:
+    = @document.title
+
+  %p
+    %strong Description:
+    = @document.description
+
+  %p
+    %strong Status:
+    = @document.state
+
+  = link_to 'Back', reviewer_documents_path, class: 'btn btn-small '
+  = link_to 'Send for publication', reviewer_send_for_publication_path(@document), class: 'btn btn-small btn-info ' if @document.state == 'pending review'
+
+- if @document.attachments.any?
+  %div{:style => 'float: left; padding: 3% 4%; text-align: left'}
+    %h3 Document attachments
+    - @document.attachments.each do |attachment|
+      = attachment.file_file_name
+      = link_to 'Download', attachment.file.url
+
+- unless @document.comments.empty? || @document.comments.first.new_record?
+  %div{:style => 'float: left; padding: 3% 4%; text-align: left'}
+    %h3 Last 3 comments
+    - @document.comments.last(3).each do |comment|
+      - unless comment.new_record?
+        %blockquote
+          %p.br= comment.content
+          %small= comment.user.name
+
+
+- if @document.state == 'pending review'
+  %div{:style => 'float: left; padding: 3% 4%;'}
+    %h3 Comment
+    = simple_form_for [:reviewer, @document], url: reviewer_send_for_rework_path, method: :get do |f|
+      = f.simple_fields_for :comments, @document.comments do |comment|
+        = comment.hidden_field :user_id, as: :hidden if comment.object.new_record?
+        = comment.input :content, as: :text, label: false if comment.object.new_record?
+
+
+      = f.submit 'Send back for rework', class: 'btn btn-small btn-warning'
+
+
+
+
+
+
+
+

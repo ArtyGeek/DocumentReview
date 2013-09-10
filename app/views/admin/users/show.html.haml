@@ -1,0 +1,40 @@
+%p
+  %strong Name:
+  = @user.name
+%p
+  %strong Email
+  = @user.email
+%p
+  %strong Role
+  = @user.roles.map {|role| role.name}.join(',')
+%p
+  %strong Count of sign ins
+  = @user.sign_in_count
+%p
+  %strong Last sign in
+  = @user.last_sign_in_at
+
+- if @user.roles.map {|role| role.name}.include? 'author'
+  %p
+    %strong Count of documents
+    = @user.documents.count
+  %p
+    %strong Documents in progress
+    = @user.documents.in_progress.count
+  %p
+    %strong Pending documents
+    = @user.documents.pending.count
+
+
+
+- @roles.each do |role|
+  - unless @user.roles.include? role
+
+    = link_to  'Add role '+role.name, {action: 'add_user_role', id: @user.id, role: role.name},  class: 'btn btn-success btn-small'
+
+
+%br
+%br
+= link_to 'Edit', edit_admin_user_path(@user), class: 'btn btn-warning btn-small'
+\|
+= link_to 'Back', admin_dashboard_path, class: 'btn btn-small'

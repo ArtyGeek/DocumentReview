@@ -1,0 +1,31 @@
+%div{ :style => "float:left; padding: 3% 5%"}
+  %h3
+    Document #
+    = @author_document.id
+  %p
+    %strong Title:
+    = @author_document.title
+  %p
+    %strong Description:
+    = @author_document.description
+  %p
+    %strong Status:
+    = @author_document.state
+
+  = link_to 'Back', author_documents_path, class: 'btn btn-small '
+
+- if @document.attachments.any?
+  %div{:style => 'float: left; padding: 3% 5%; text-align: left'}
+    %h3 Document attachments
+    - @document.attachments.each do |attachment|
+      = attachment.file_file_name
+      = link_to 'Download', attachment.file.url
+
+- unless @document.comments.empty? || @document.comments.first.new_record?
+  %div{:style => 'float: left; padding: 3% 5%; text-align: left'}
+    %h3 Last 3 comments
+    - @document.comments.last(3).each do |comment|
+      - unless comment.new_record?
+        %blockquote
+          %p.br= comment.content
+          %small= comment.user.name

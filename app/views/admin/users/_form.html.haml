@@ -1,0 +1,11 @@
+.form-inputs
+= simple_form_for [:admin, @user] do |f|
+  = f.error_notification
+  = display_base_errors @user
+  = f.input :name, autofocus: true
+  = f.input :email, required: true
+  = f.input :password, autocomplete: "off", :hint => "leave it blank if you don't want to change it"
+  = f.input :password_confirmation
+  = f.button :submit, 'Update', class: 'btn-primary'
+
+

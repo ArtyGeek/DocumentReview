@@ -1,0 +1,22 @@
+= simple_nested_form_for [:author, @author_document],  html: {multipart: true}  do |f|
+  = f.error_notification
+  = f.error :base
+
+
+  .form-inputs
+    = f.input :title
+    = f.input :description, :as => :text
+    %br
+    = f.simple_fields_for :attachments do |attachment|
+
+      %p
+        %strong Current file:
+        = attachment.object.file_file_name
+        %br
+        = attachment.input :file, as: :file
+        = attachment.link_to_remove "Remove this file", class: 'btn btn-danger btn-mini'
+
+    = f.link_to_add "Add an attachment", :attachments, class: 'btn btn-success'
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to  'Back' , author_documents_path, :class => 'btn'

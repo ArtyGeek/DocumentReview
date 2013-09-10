@@ -1,0 +1,74 @@
+%h1 List of Documents
+%br
+
+
+%ul#myTab.nav.nav-tabs
+  %li{:class => 'active'}
+    %a{:href => "#in-progress"} In progress
+  %li
+    %a{:href => "#pending-review"} Pending
+  %li
+    %a{:href => "#published"} Published
+
+.tab-content
+  #in-progress.tab-pane.active
+    %table{:class => 'table table-stripped'}
+      %tr
+        %th Title
+        %th Description
+        %th Status
+        %th Actions
+
+      - @author_documents.in_progress.each do |author_document|
+        %tr
+          %td= author_document.title
+          %td= author_document.description
+          %td= author_document.state
+          %td
+            = link_to 'Show', author_document_path(author_document), class: 'btn btn-success btn-small'
+            = link_to 'Edit', edit_author_document_path(author_document), class: 'btn btn-warning btn-small'
+            = link_to 'Send for review', author_send_for_review_path(author_document), class: 'btn btn-info btn-small'
+            = link_to 'Destroy', author_document_path(author_document), class: 'btn btn-danger btn-small', method: :delete, data: { confirm: 'Are you sure?' }
+
+      %br
+
+    = link_to 'New Document', new_author_document_path, class: 'btn btn-primary'
+
+
+  #pending-review.tab-pane
+    %table{:class => 'table table-stripped'}
+      %tr
+        %th Title
+        %th Description
+        %th Status
+        %th Actions
+
+      - @author_documents.pending.each do |author_document|
+        %tr
+          %td= author_document.title
+          %td= author_document.description
+          %td= author_document.state
+          %td
+            = link_to 'Show', author_document_path(author_document), class: 'btn btn-success btn-small'
+
+      %br
+
+
+  #published.tab-pane
+    %table{:class => 'table table-stripped'}
+      %tr
+        %th Title
+        %th Description
+        %th Status
+        %th Actions
+
+      - @author_documents.with_state(:published).each do |author_document|
+        %tr
+          %td= author_document.title
+          %td= author_document.description
+          %td= author_document.state
+          %td
+            = link_to 'Show', author_document_path(author_document), class: 'btn btn-success btn-small'
+
+      %br
+

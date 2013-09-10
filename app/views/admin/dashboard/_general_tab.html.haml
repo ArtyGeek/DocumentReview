@@ -1,0 +1,20 @@
+%div{:style => 'max-width: 30%; float:left; text-align: center'}
+  %h5 Users by roles
+  %table{:class => 'table table-bordered table-striped table-hover'}
+    %thead
+      %th Role
+      %th Count of users
+    - @roles.each do |role|
+      %tr
+        %td= role.name
+        %td= role.users.count
+%div{:style => 'max-width: 60%; float:left; text-align: center; margin-left:5%'}
+  %h5 Documents by state
+  %table{:class => 'table  table-bordered table-striped table-hover'}
+    %thead
+      %th State
+      %th Count
+    - @states.each do |state|
+      %tr
+        %td= state.first
+        %td= state.second
