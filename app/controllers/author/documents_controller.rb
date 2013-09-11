@@ -67,6 +67,8 @@ class Author::DocumentsController < BaseController
 
   private
      def authorize_author!
+      puts "="*25
+      puts current_user.has_role? :author
       redirect_to root_path, alert: "You are not authorized to access this page." unless current_user.has_role? :author
     end
 

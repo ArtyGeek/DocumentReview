@@ -17,6 +17,7 @@ gem 'twitter-bootstrap-rails'
 gem 'state_machine'
 gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
 gem 'paperclip'
+gem 'figaro'
 
 
 

@@ -6,12 +6,21 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 puts 'ROLES'
-ROLES = %w[admin author reviewer default]
-ROLES.each do |role|
+
+
+ENV['ROLES'].split(',').each do |role|
   Role.find_or_create_by_name(role)
   puts 'role: ' << role
 end
+
 puts 'DEFAULT USERS'
-user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
-puts 'user: ' << user.name
-user.add_user_role :admin
+
+
+Role.all.each do |role|
+  puts role.inspect
+  @user = User.create(name: role.name, email: role.name+'@demo.app', password:  role.name+'12345', password_confirmation:  role.name+'12345')
+  puts 'user ' << @user.name
+  puts 'password: '+role.name+'12345'
+  @user.add_user_role role.name
+end
+
