@@ -22,7 +22,7 @@
       - @author_documents.in_progress.each do |author_document|
         %tr
           %td= author_document.title
-          %td= author_document.description
+          %td= slice_a_little author_document.description
           %td= author_document.state
           %td
             = link_to 'Show', author_document_path(author_document), class: 'btn btn-success btn-small'
@@ -46,7 +46,7 @@
       - @author_documents.pending.each do |author_document|
         %tr
           %td= author_document.title
-          %td= author_document.description
+          %td= slice_a_little author_document.description
           %td= author_document.state
           %td
             = link_to 'Show', author_document_path(author_document), class: 'btn btn-success btn-small'
@@ -65,7 +65,7 @@
       - @author_documents.with_state(:published).each do |author_document|
         %tr
           %td= author_document.title
-          %td= author_document.description
+          %td= slice_a_little author_document.description
           %td= author_document.state
           %td
             = link_to 'Show', author_document_path(author_document), class: 'btn btn-success btn-small'

@@ -12,4 +12,8 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def slice_a_little text
+    text.length > 100 ? text.slice(0..100)+'...' : text
+  end
+
 end

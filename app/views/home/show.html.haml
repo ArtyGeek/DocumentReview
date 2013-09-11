@@ -1,0 +1,26 @@
+%p
+  %h3= @document.title
+
+%div
+  %p
+    %b Description:
+    = @document.description
+  %p
+
+    %b Author:
+    = @document.user.name
+  %p
+    %b Status:
+    = @document.state
+
+- if @document.attachments.any?
+  %div{ :class => "admin-documents-standart"}
+    %h5 Document attachments
+    - @document.attachments.each do |attachment|
+      = attachment.file_file_name
+      = link_to 'Download', attachment.file.url
+      %br
+
+
+  = link_to 'Back', root_path, class: 'btn btn-small'
+

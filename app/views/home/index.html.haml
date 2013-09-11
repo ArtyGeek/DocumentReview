@@ -11,8 +11,8 @@
   - @documents.each do |author_document|
     %tr
       %td= author_document.title
-      %td= author_document.description
+      %td= slice_a_little author_document.description
       %td= author_document.state
       %td
-        = link_to 'Show', author_document_path(author_document), class: 'btn btn-success btn-small'
+        = link_to 'Show', document_path(author_document), class: 'btn btn-success btn-small'
 

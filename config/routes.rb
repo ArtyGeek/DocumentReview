@@ -1,6 +1,7 @@
 Documentreview::Application.routes.draw do
 
   root :to => "home#index"
+  get 'documents/:id', to: 'home#show', as: :document
   devise_for :users
 
   namespace :reviewer do

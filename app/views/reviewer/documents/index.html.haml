@@ -22,7 +22,7 @@
       - @documents.with_state(:pending_review).each do |document|
         %tr
           %td= document.title
-          %td= document.description
+          %td= slice_a_little document.description
           %td= document.state
           %td
             = link_to 'Show', reviewer_document_path(document), class: 'btn btn-success btn-small'
@@ -41,7 +41,7 @@
       - @documents.with_state(:in_rework).each do |document|
         %tr
           %td= document.title
-          %td= document.description
+          %td= slice_a_little document.description
           %td= document.state
           %td
             = link_to 'Show', reviewer_document_path(document), class: 'btn btn-success btn-small'

@@ -39,5 +39,6 @@ Documentreview::Application.configure do
   # Send email in development mode.
   config.action_mailer.default_url_options = { host: '127.0.0.1:3000' }
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_from = 'rails-demo@artygeek.com'
 
 end

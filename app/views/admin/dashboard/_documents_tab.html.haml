@@ -9,7 +9,7 @@
   - @documents.each do |document|
     %tr
       %td= document.title
-      %td= document.description
+      %td= slice_a_little document.description
       %td= document.user.name
       %td= document.state
       %td
