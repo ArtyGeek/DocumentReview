@@ -11,10 +11,10 @@ Project purpose:
 Current project is Document Review System.
 
 There are 4 main user roles:
- - default - regular user - have access to published documents.
+ - default - regular user - has access to published documents.
  - author - can create new or work on existing document and then submit it for review
  - reviewer - can perform a review on submitted for review documents and send back for rework or send for publication
- - admin - have access to admin dashboard / can manage users / assigns roles to users / responsible for the publication
+ - admin - has access to admin dashboard / can manage users / assigns roles to users / responsible for the publication
 
 Only published projects are shown at landing page.
 
