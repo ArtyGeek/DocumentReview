@@ -5,12 +5,6 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
-ENV['ADMIN_NAME'] = 'admin'
-ENV['ADMIN_EMAIL'] = 'admin@demo.app'
-ENV['ADMIN_PASSWORD'] = 'admin12345'
-ENV["DOMAIN_NAME"] = 'gmail.com'
-ENV["GMAIL_USERNAME"] = 'yurko25@gmail.com'
-ENV["GMAIL_PASSWORD"] = 'cypress,ktfnm'
 
 
 module Documentreview
