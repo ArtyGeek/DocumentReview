@@ -3,10 +3,6 @@ require "spec_helper"
 describe Admin::UsersController do
   describe "routing" do
 
-    it "routes to #index" do
-      get("/admin/users").should route_to("admin/users#index")
-    end
-
     it "routes to #new" do
       get("/admin/users/new").should route_to("admin/users#new")
     end

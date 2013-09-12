@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :comment do
-    content "MyString"
+    content "Lorem ipsum !@#$%^^&(*)))+_}"
     user_id 1
-    document_id "MyString"
+    document_id 1
   end
 end

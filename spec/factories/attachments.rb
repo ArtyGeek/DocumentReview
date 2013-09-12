@@ -2,7 +2,6 @@
 
 FactoryGirl.define do
   factory :attachment do
-    document_id "MyString"
-    integer "MyString"
+    file File.new(Rails.root.join('spec','factories','sample_doc.pdf'))
   end
 end
