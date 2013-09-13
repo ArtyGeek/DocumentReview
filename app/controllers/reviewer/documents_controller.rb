@@ -15,7 +15,6 @@ class Reviewer::DocumentsController < BaseController
 
   def send_for_rework
 
-    p document_params
     respond_to do |format|
       if @document.send_for_rework(document_params)
         format.html { redirect_to reviewer_documents_url, notice: 'Document was successfully commented and sent for rework' }
