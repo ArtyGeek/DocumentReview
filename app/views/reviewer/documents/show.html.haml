@@ -43,7 +43,7 @@
     = simple_form_for [:reviewer, @document], url: reviewer_send_for_rework_path, method: :get do |f|
       = f.simple_fields_for :comments, @document.comments do |comment|
         = comment.hidden_field :user_id, as: :hidden if comment.object.new_record?
-        = comment.input :content, as: :text, label: false if comment.object.new_record?
+        = comment.input :content, as: :text, input_html: { id: 'comment' }, label: false if comment.object.new_record?
 
 
       = f.submit 'Send back for rework', class: 'btn btn-small btn-warning'

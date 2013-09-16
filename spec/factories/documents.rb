@@ -1,8 +1,8 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  sequence(:title) {|n| 'Title ##{n}'}
-  sequence(:description) {|n| 'Sample text #{n} '*25}
+  sequence(:title) { |n| "Title ##{n}"}
+  sequence(:description) {|n| "Sample text #{n}"*25}
 
   factory :document do
     title

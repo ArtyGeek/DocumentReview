@@ -46,17 +46,9 @@ class Author::DocumentsController < BaseController
   end
 
   def destroy
-    @author_document.destroy
     respond_to do |format|
-      format.html { redirect_to author_documents_url }
-      format.json { head :no_content }
-    end
-  end
-
-  def send_for_review
-    respond_to do |format|
-      if @author_document.send_for_review
-        format.html { redirect_to author_documents_url, notice: 'Document was successfully sent for review' }
+      if @author_document.destroy
+        format.html { redirect_to author_documents_url, notice: 'Document was successfully destroyed' }
         format.json { head :no_content }
       else
         format.html { redirect_to author_documents_url}
@@ -65,10 +57,20 @@ class Author::DocumentsController < BaseController
     end
   end
 
-  private
-     def authorize_author!
-      puts "="*25
-      puts current_user.has_role? :author
+    def send_for_review
+      respond_to do |format|
+        if @author_document.send_for_review
+          format.html { redirect_to author_documents_url, notice: 'Document was successfully sent for review' }
+          format.json { head :no_content }
+        else
+          format.html { redirect_to author_documents_url}
+          format.json { render json: @author_document.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
+    private
+    def authorize_author!
       redirect_to root_path, alert: "You are not authorized to access this page." unless current_user.has_role? :author
     end
 
@@ -79,4 +81,4 @@ class Author::DocumentsController < BaseController
     def document_params
       params.require(:document).permit(:id, '_destroy', :title, :description, attachments_attributes: [:file, :id, '_destroy'])
     end
-end
+  end
